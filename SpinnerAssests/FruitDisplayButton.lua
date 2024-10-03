@@ -4,7 +4,7 @@ local rarityEvent = game:GetService("ReplicatedStorage"):WaitForChild("RarityPic
 -- Function to update the FRUIT button text when the event is triggered
 local function onRarityReceived(rarity, fruit)
 	button.Text = fruit .. " (" .. rarity .. ")"  -- Set button text to display fruit and rarity
-	print("Rarity: " .. rarity .. ", Fruit: " .. fruit)
+	print("Rarity received: " .. rarity .. ", Fruit: " .. fruit)
 end
 
 -- Connect the BindableEvent to the function

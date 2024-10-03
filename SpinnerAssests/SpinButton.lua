@@ -2,6 +2,7 @@ local button = script.Parent
 
 local function onButtonActivated()
 	print("Button activated!")
+	local rarityEvent = game:GetService("ReplicatedStorage"):WaitForChild("RarityPicked")  -- Reference the BindableEvent
 
 	local j = "common"  -- Variable to store rarity
 
@@ -60,4 +61,5 @@ local function onButtonActivated()
 	print("Selected Fruit: " .. selectedFruit)
 end
 
+rarityEvent:Fire(selectedRarity, selectedFruit)
 button.Activated:Connect(onButtonActivated)
