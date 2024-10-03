@@ -1,8 +1,8 @@
 local button = script.Parent
+local rarityEvent = game:GetService("ReplicatedStorage"):WaitForChild("RarityPicked")  -- Reference the BindableEvent
 
 local function onButtonActivated()
 	print("Button activated!")
-	local rarityEvent = game:GetService("ReplicatedStorage"):WaitForChild("RarityPicked")  -- Reference the BindableEvent
 
 	local j = "common"  -- Variable to store rarity
 
@@ -15,16 +15,17 @@ local function onButtonActivated()
 		{tier = "legendary", chance = 0.15},   -- 15% chance
 		{tier = "mythic", chance = 0.05}       -- 5% chance
 	}
+
 	-- Create list of fruits for each rarity
 	local Fruits = {
 		common = {"apple", "banana", "orange", "grape", "strawberry", "watermelon", "pear", "blueberry"},
 		uncommon = {"kiwi", "mango", "pineapple", "passionfruit", "guava", "pomegranate"},
 		rare = {"dragonfruit", "starfruit", "lychee", "persimmon", "durian"},
-		epic = {"rambutan", "salak", "buddhas_hand", "jabuticaba"},
-		legendary = {"hala_fruit", "ackee", "horned_melon"},
-		mythic = {"blue_java_banana", "coco_de_mer"}
+		epic = {"rambutan", "salak", "buddhas hand", "jabuticaba"},
+		legendary = {"hala fruit", "ackee", "horned melon"},
+		mythic = {"blue java banana", "coco de mer"}
 	}
-	
+
 	-- Function to get a random rarity based on probabilities
 	local function RNG()
 		local roll = math.random()  -- Random number between 0 and 1
@@ -37,11 +38,11 @@ local function onButtonActivated()
 			end
 		end
 	end
-	
+
 	-- Get the selected rarity
 	local selectedRarity = RNG()
-	print(selectedRarity) 
-	
+	print("Selected Rarity: " .. selectedRarity) 
+
 	-- Select a random fruit based on the rarity
 	local selectedFruit
 	if selectedRarity == "common" then
@@ -57,9 +58,11 @@ local function onButtonActivated()
 	elseif selectedRarity == "mythic" then
 		selectedFruit = Fruits.mythic[math.random(#Fruits.mythic)]
 	end
-	
+
 	print("Selected Fruit: " .. selectedFruit)
+
+	-- Fire the event after calculating the fruit and rarity
+	rarityEvent:Fire(selectedRarity, selectedFruit)
 end
 
-rarityEvent:Fire(selectedRarity, selectedFruit)
 button.Activated:Connect(onButtonActivated)
