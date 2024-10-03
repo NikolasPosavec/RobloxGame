@@ -1,0 +1,17 @@
+What do we want the game to do?
+1.Click spin button to get a fruit that has a corresponding rarity
+    a.Store fruit in inventory
+    b.Create money system (selling fruits, buying luck boosts or something like that)
+    c.Keep track of spins in scoreboard, sort scoreboard by # of spins
+2.Have daily reward system
+    a.Spinner maybe
+3.Have some sort of mini game(s)
+    a.??? need idea
+
+How can we do this stuff?
+1.Make rarity table and make an RNG function that outputs a rarity for each spin
+    a.Use DataStore function in RS, make sure API services are on
+    b.Create leaderboard using leaderstats in RS, use DataStore for money
+    c.Once again use DataStore in RS and add to leaderboard from before
+2.Again we have to do some DataStore magic
+3.I have no clue
