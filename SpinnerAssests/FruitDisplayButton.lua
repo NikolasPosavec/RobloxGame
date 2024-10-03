@@ -1,14 +1,12 @@
-local button = script.Parent
+local textLabel = script.Parent  -- Reference the TextLabel
 local rarityEvent = game:GetService("ReplicatedStorage"):WaitForChild("RarityPicked")  -- Reference the BindableEvent
-local imageLabel = button.Parent:WaitForChild("ImageLabel")  -- Reference the ImageLabel
+local imageLabel = textLabel.Parent:WaitForChild("ImageLabel")  -- Reference the ImageLabel
 
--- Function to update the FRUIT button text and image when the event is triggered
+-- Function to update the FRUIT label text and image when the event is triggered
 local function onRarityReceived(rarity, fruit)
-	button.Text = fruit .. " (" .. rarity .. ")"  -- Set button text to display fruit and rarity
+	-- Set the label text to display fruit and rarity
+	textLabel.Text = fruit .. " (" .. rarity .. ")"  
 	print("Rarity received: " .. rarity .. ", Fruit: " .. fruit)
-
-	-- Set the image based on the selected fruit
-	local imageId = ""
 
 	-- Map each fruit to its corresponding image ID
 	local fruitImages = {
@@ -43,9 +41,7 @@ local function onRarityReceived(rarity, fruit)
 	}
 
 	-- Set the image ID based on the selected fruit
-	if fruitImages[fruit] then
-		imageId = fruitImages[fruit]
-	end
+	local imageId = fruitImages[fruit] or ""
 
 	-- Update the ImageLabel with the corresponding image
 	imageLabel.Image = imageId

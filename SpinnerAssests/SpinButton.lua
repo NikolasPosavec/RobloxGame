@@ -1,10 +1,8 @@
-local button = script.Parent
+local button = script.Parent 
 local rarityEvent = game:GetService("ReplicatedStorage"):WaitForChild("RarityPicked")  -- Reference the BindableEvent
 
 local function onButtonActivated()
 	print("Button activated!")
-
-	local j = "common"  -- Variable to store rarity
 
 	-- Define rarity tiers and probabilities
 	local rarities = {
@@ -44,20 +42,7 @@ local function onButtonActivated()
 	print("Selected Rarity: " .. selectedRarity) 
 
 	-- Select a random fruit based on the rarity
-	local selectedFruit
-	if selectedRarity == "common" then
-		selectedFruit = Fruits.common[math.random(#Fruits.common)]
-	elseif selectedRarity == "uncommon" then
-		selectedFruit = Fruits.uncommon[math.random(#Fruits.uncommon)]
-	elseif selectedRarity == "rare" then
-		selectedFruit = Fruits.rare[math.random(#Fruits.rare)]
-	elseif selectedRarity == "epic" then
-		selectedFruit = Fruits.epic[math.random(#Fruits.epic)]
-	elseif selectedRarity == "legendary" then
-		selectedFruit = Fruits.legendary[math.random(#Fruits.legendary)]
-	elseif selectedRarity == "mythic" then
-		selectedFruit = Fruits.mythic[math.random(#Fruits.mythic)]
-	end
+	local selectedFruit = Fruits[selectedRarity][math.random(#Fruits[selectedRarity])]
 
 	print("Selected Fruit: " .. selectedFruit)
 
@@ -65,4 +50,4 @@ local function onButtonActivated()
 	rarityEvent:Fire(selectedRarity, selectedFruit)
 end
 
-button.Activated:Connect(onButtonActivated)
+button.MouseButton1Click:Connect(onButtonActivated)  -- Use MouseButton1Click for ImageButton activation
