@@ -3,9 +3,9 @@ local button = script.Parent
 local function onButtonActivated()
 	print("Button activated!")
 
-	local j = "common"  -- Local variable to store rarity
+	local j = "common"  -- Variable to store rarity
 
-	-- Define rarity tiers and their probabilities
+	-- Define rarity tiers and probabilities
 	local rarities = {
 		{tier = "common", chance = 0.10},      -- 10% chance
 		{tier = "uncommon", chance = 0.20},    -- 20% chance
@@ -24,7 +24,7 @@ local function onButtonActivated()
 		mythic = {"blue_java_banana", "coco_de_mer"}
 	}
 	
-	-- Function to get a random rarity based on defined probabilities
+	-- Function to get a random rarity based on probabilities
 	local function RNG()
 		local roll = math.random()  -- Random number between 0 and 1
 		local cumulative = 0
@@ -32,16 +32,32 @@ local function onButtonActivated()
 		for _, rarity in ipairs(rarities) do
 			cumulative = cumulative + rarity.chance
 			if roll <= cumulative then
-				return rarity.tier  -- Return the rarity that matches the random roll
-				return Fruits.
+				return rarity.tier  -- Return the rarity that matches the roll
 			end
 		end
 	end
-
 	
-
-	local selectedRarity = RNG()  -- Get the selected rarity
-	print(selectedRarity)          -- Print the selected rarity
+	-- Get the selected rarity
+	local selectedRarity = RNG()
+	print(selectedRarity) 
+	
+	-- Select a random fruit based on the rarity
+	local selectedFruit
+	if selectedRarity == "common" then
+		selectedFruit = Fruits.common[math.random(#Fruits.common)]
+	elseif selectedRarity == "uncommon" then
+		selectedFruit = Fruits.uncommon[math.random(#Fruits.uncommon)]
+	elseif selectedRarity == "rare" then
+		selectedFruit = Fruits.rare[math.random(#Fruits.rare)]
+	elseif selectedRarity == "epic" then
+		selectedFruit = Fruits.epic[math.random(#Fruits.epic)]
+	elseif selectedRarity == "legendary" then
+		selectedFruit = Fruits.legendary[math.random(#Fruits.legendary)]
+	elseif selectedRarity == "mythic" then
+		selectedFruit = Fruits.mythic[math.random(#Fruits.mythic)]
+	end
+	
+	print("Selected Fruit: " .. selectedFruit)
 end
 
 button.Activated:Connect(onButtonActivated)
