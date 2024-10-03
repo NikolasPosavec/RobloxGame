@@ -8,12 +8,12 @@ local function onButtonActivated()
 
 	-- Define rarity tiers and probabilities
 	local rarities = {
-		{tier = "common", chance = 0.10},      -- 10% chance
-		{tier = "uncommon", chance = 0.20},    -- 20% chance
-		{tier = "rare", chance = 0.30},        -- 30% chance
-		{tier = "epic", chance = 0.20},        -- 20% chance
-		{tier = "legendary", chance = 0.15},   -- 15% chance
-		{tier = "mythic", chance = 0.05}       -- 5% chance
+		{tier = "common", chance = 0.40},      -- 40% chance
+		{tier = "uncommon", chance = 0.30},    -- 30% chance
+		{tier = "rare", chance = 0.14},        -- 14% chance
+		{tier = "epic", chance = 0.10},        -- 10% chance
+		{tier = "legendary", chance = 0.05},   -- 5% chance
+		{tier = "mythic", chance = 0.01}       -- 1% chance
 	}
 
 	-- Create list of fruits for each rarity
